@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>新闻视界_国内新闻_{$record->subject}</title>
+<link type="text/css" rel="stylesheet" media="all" href="__ROOT__/static/common/styles/reset.css"/>
+<link type="text/css" rel="stylesheet" media="all" href="__ROOT__/static/common/styles/layout.css"/>
+<link type="text/css" rel="stylesheet" media="all" href="__ROOT__/static/common/styles/common.css"/>
+</head>
+<body>
+<!-- 通用顶部导航开始-->
+<div id="top-navi-wrap">
+	<div class="clearfix" id="top-navi">
+		<div class="side-left">
+			<a href="#">巴西世界杯一再爆冷 卫冕冠军西班牙出局</a>
+			<a href="#">瑞士人为啥最幸福</a>　
+			<a href="#">中国病人庞麦郎</a>
+		</div>
+		<div class="side-right">
+			{if condition="$Think.session.nickname=='' || $Think.session.username == ''"}
+			<a href="{:url('/login')}" target="_blank" class="top-nav-login-title">登录</a>
+			{/if}
+			<div class="top-nav-select-title">
+				{if condition="$Think.session.nickname=='' || $Think.session.username == ''"}
+				<a href="{:url('/register')}" target="_blank">免费注册</a>
+				{else}
+				<span>您好，<a href="#" class="current-user">{$Think.session.nickname}</a></span>
+				<a href="{:url('/logout')}">退出</a>
+				{/if}
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 通用顶部导航结束 -->
+<!--header start-->
+<div class="clear" id="header">
+		<div id="logo"><a href="#" title="换一个角度看新闻"></a></div>
+		<div id="search-bar">
+			<form name="search-form" action="" method="get">
+				<input type="text" name="keywords" id="keywords" value="党报连发治军铁腕新政"/>
+				<input type="submit" value="" id="search-submit-button"/>
+			</form>
+		</div>
+</div>
+<!--header end-->
+<!--导航开始-->
+<div id="navigation">
+	<ul class="clear">
+		<li><a href="index.html" target="_blank">首页</a></li>
+		<li><a href="roll.html" target="_blank">滚动</a></li>
+		<li><a href="china.html" target="_blank">国内</a></li>
+		<li><a href="world.html" target="_blank">国际</a></li>
+		<li><a href="society.html" target="_blank">社会</a></li>
+		<li><a href="photo.html" target="_blank">图片</a></li>
+		<li><a href="ent.html" target="_blank">娱乐</a></li>
+		<li><a href="military.html" target="_blank">军事</a></li>
+		<li><a href="bbs.html" target="_blank">评论</a></li>
+		<li><a href="history.html" target="_blank">历史</a></li>
+		<li><a href="encyclopedia.html" target="_blank">百科</a></li>
+		<li><a href="commonweal.html" target="_blank">公益</a></li>
+	</ul>
+</div>
+<!--导航结束-->
+<div class="section">
+	<h1 class="article-title">{$record->subject}</h1>
+	<div class="clear">
+		<div class="side-left-680" id="article">		
+			<div class="article-info">{$record->addtime|date="Y年m月d日H:i",###}<a href="{:url('/comment/default')}?newsid={$record->id}">评论(<span class="comment-count-wrapper">{$record->commentnums}</span>)</a></div>
+			<div class="article-body">
+				{$record->content}
+			</div>
+			<div id="comment">
+				<p class="comment-count"><a href="{:url('/comment/default')}?newsid={$record->id}">已有<span class="comment-count-wrapper">{$record->commentnums}</span>条评论</a></p>
+				<textarea class="comment-content" id="comment-content">请输入评论内容</textarea>
+				<div class="comment-user-cont clear">
+					{if condition="$Think.session.nickname == '' || $Think.session.username==''"}
+					<div class="comment-user-username"><input type="text" id="username"  class="comment-input" value="请输入账号"/></div>
+					<div class="comment-user-password"><input type="password" id="password" class="comment-input" value="请输入密码"/></div>
+					<div class="comment-user-link">
+						<a href="javascript:void(0)" id="login-button">登录</a>
+						<a href="{:url('/register')}" id="login-button">注册</a>
+					</div>		
+					{else}
+					<div class="comment-user-logined">
+						<span><a href="#">{$Think.session.nickname}</a></span>
+						<span><a href="{:url('/logout')}">退出</a></span>
+						<a href="javascript:void(0)" class="comment-publishing-btn" id="comment-publishing-btn">发布</a>				</div>
+					{/if}
+				</div>
+				
+			</div>
+		</div>
+		<div class="side-right-300">
+			<h3 class="hot-title">24小时排行榜</h3>
+			<ol class="list-hot">
+				<li class="hot"><span class="top-num num1">01</span><a href="http://news.sina.com.cn/c/2015-03-01/021731553483.shtml" target="_blank">广东:遇台风黄色预警等四种信号即可自行停课</a></li>
+				<li class="hot"><span class="top-num num2">02</span><a href="http://news.sina.com.cn/c/2015-03-01/020931553472.shtml" target="_blank">上海迪斯尼回应单日票价500元:仍在研究</a></li>
+				<li class="hot"><span class="top-num num3">03</span><a href="http://news.sina.com.cn/c/2015-03-01/020431553512.shtml" target="_blank">西安市环保局原局长等5人涉嫌受贿被捕</a></li>
+				<li><span class="top-num">04</span><a href="http://news.sina.com.cn/c/2015-03-01/005931553346.shtml" target="_blank">北京国土局:暂不发放新版房产证 </a></li>
+				<li><span class="top-num">05</span><a href="http://news.sina.com.cn/c/2015-02-28/233331553297.shtml" target="_blank">江西为3.36万名农民工追讨工资及赔偿金4.79亿</a></li>
+				<li><span class="top-num">06</span><a href="http://news.sina.com.cn/c/2015-02-28/230931553282.shtml" target="_blank">江西乐平煤矿煤与瓦斯突出事故已确认4矿工被</a></li>
+				<li><span class="top-num">07</span><a href="http://news.sina.com.cn/c/2015-02-28/225631553279.shtml" target="_blank">南昌符合标准校车仅1辆获标牌 安全隐患巨大</a></li>
+				<li><span class="top-num">08</span><a href="http://news.sina.com.cn/c/2015-02-28/211631553192.shtml" target="_blank">广东化州政协副主席李沛涉嫌严重违纪被调查</a></li>
+				<li><span class="top-num">09</span><a href="http://news.sina.com.cn/c/2015-02-28/202131553113.shtml" target="_blank">青海狱警违规为17名罪犯办理减刑一审获刑18年</a></li>
+				<li><span class="top-num">10</span><a href="http://news.sina.com.cn/c/2015-02-28/200431553106.shtml" target="_blank">湖北黄冈人大常委会主任龙福清等2人被调查</a></li>
+			</ol>		
+		
+		</div>
+	</div>
+</div>
+<!--版权区 start-->
+<div class="section footer">
+  <p>24小时客户服务热线：4006900000 010-82623378 <a href="#">常见问题解答</a> <a target="_blank" href="http://www.12377.cn/">互联网违法和不良信息举报</a></p>
+  <p><a target="_blank" href="#">新闻中心意见反馈留言板</a></p>
+  <p><a href="http://www.tarena.com.cn/">达内简介</a> | <a href="#">关于达内</a> | <a href="#">广告服务</a> | <a href="#">联系我们</a> | <a href="#">招聘信息</a> | <a href="#">网站律师</a> |  <a href="#">通行证注册</a> | <a href="#">产品答疑</a></p>
+  <p>Copyright &copy; 1996-2015 TARENA Corporation, All Rights Reserved</p>
+</div>
+<!--版权区 end-->
+<script src="__ROOT__/static/common/js/jquery-2.0.3.min.js"></script>
+<script>
+	$(function(){
+		$('#login-button').click(function(){
+			$.post('{:url('/login')}','username='  + $('#username').val() + '&password=' + $('#password').val(),function(){
+				location.reload();
+			})
+		});
+		$('#comment-publishing-btn').click(function(){
+			$.post('{:url('/comment/post')}','content=' + $('#comment-content').val()+'&news_id={:Request()->param('id')}',function(){
+				$('#comment-content').val('请输入评论内容');
+				var commentnums = parseInt($('.comment-count-wrapper').first().text())+1;												
+				$('.comment-count-wrapper').text(commentnums);				
+			});
+		});
+	});
+</script>
+</body>
+</html>
